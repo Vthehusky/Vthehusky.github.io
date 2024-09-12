@@ -11,7 +11,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh; /* Ensure body takes up the full screen height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -38,13 +38,54 @@ nav ul li a {
   text-decoration: none;
 }
 
-/* Dark overlay for the intro section */
+/* Terminal style with Ubuntu Mono font */
+#terminal {
+  font-family: 'Ubuntu Mono', monospace;
+  background-color: black;
+  color: green;
+  padding: 15px;
+  display: inline-block;
+  margin-top: 20px;
+  border-radius: 5px;
+  width: fit-content;
+  white-space: nowrap;
+  margin: 0 auto; /* Center the text */
+}
+
+#static-wrapper {
+  text-align: center; /* Ensure the static text is centered */
+}
+
+#skill-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#static-text, #typing-text {
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  background-color: green;
+  width: 8px;
+  height: 20px;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 #intro {
   position: relative;
   padding: 100px 0;
   text-align: center;
   color: #fff;
-  flex-grow: 1; /* Allows the intro section to take up remaining space */
+  flex-grow: 1;
 }
 
 #intro::before {
@@ -64,7 +105,12 @@ nav ul li a {
   color: #fff;
 }
 
-/* Ensure the footer stays at the bottom of the page */
+/* Ensure the button is fixed below the typing animation */
+.button-container {
+  margin-top: 30px;
+  text-align: center; /* Center button container */
+}
+
 footer {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -82,4 +128,5 @@ footer {
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
+  text-align: center;
 }

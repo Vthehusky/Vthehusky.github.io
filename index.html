@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Robotics Engineer Portfolio</title>
+  <!-- Import Ubuntu Mono font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,12 +23,110 @@
 
   <section id="intro">
     <h1>Hi, my name is Vinay!</h1>
-    <p>I am a robotics engineer with expertise in autonomous systems, software development, hardware design, and hardware-software integration. Explore my projects, resume, and more to learn about my work and background.</p>
-    <a href="projects.html" class="btn">View My Projects</a>
+
+    <!-- Terminal-style text -->
+    <div id="terminal">
+      <div id="static-wrapper">
+        <span id="static-text"></span><span id="static-cursor" class="cursor">|</span>
+      </div>
+      <div id="skill-wrapper">
+        <span id="typing-text"></span><span id="skill-cursor" class="cursor">|</span>
+      </div>
+    </div>
+
+    <!-- Button for projects, fixed below the animation -->
+    <div class="button-container">
+      <a href="projects.html" class="btn">View My Projects</a>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2024 Vinay Prakash. All rights reserved.</p>
   </footer>
+
+  <!-- JavaScript for typing effect -->
+  <script>
+    const phrase = "I am a robotics engineer with expertise in -";  // Static text without space
+    const skills = [
+      " autonomous mobile robots",  // Add leading space to each skill
+      " robotics software development",
+      " hardware electronics system design",
+      " hardware-software integration"
+    ];
+
+    let phraseIndex = 0;
+    let skillIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+    let isTypingPhrase = true; // Indicates whether the phrase is being typed out
+    const staticTextElement = document.getElementById('static-text');
+    const typingTextElement = document.getElementById('typing-text');
+    const staticCursor = document.getElementById('static-cursor');
+    const skillCursor = document.getElementById('skill-cursor');
+
+    // Initialize empty content and hide the typing text initially
+    staticTextElement.textContent = "";
+    typingTextElement.style.display = 'none'; // Hide typing-text until typing starts
+
+    function typeCenterAlignText(text, element, index, maxIndex) {
+      // For center alignment while typing, calculate padding dynamically based on remaining text length
+      const totalChars = maxIndex;
+      const currentChars = index;
+      const spacesToPad = Math.floor((totalChars - currentChars) / 2);
+      const padding = '&nbsp;'.repeat(spacesToPad);
+      element.innerHTML = padding + text.slice(0, index);
+    }
+
+    function typeSkill() {
+      if (isTypingPhrase) {
+        typeCenterAlignText(phrase, staticTextElement, phraseIndex, phrase.length);
+        phraseIndex++;
+        if (phraseIndex >= phrase.length) {
+          isTypingPhrase = false; // Once phrase is typed out, start typing skills
+          staticCursor.style.display = 'none'; // Hide the cursor for the phrase
+          skillCursor.style.display = 'inline-block'; // Show the cursor for the skills
+          setTimeout(typeSkill, 1000); // Wait before typing the first skill
+          return;
+        }
+        setTimeout(typeSkill, 100); // Typing speed for the phrase
+      } else {
+        const currentSkill = skills[skillIndex];
+        if (charIndex === 0) {
+          // When starting to type a skill, ensure the typing-text element is visible
+          typingTextElement.style.display = 'inline-block';
+          typingTextElement.textContent = ""; // Make sure the content starts as empty
+        }
+
+        if (typing) {
+          typeCenterAlignText(currentSkill, typingTextElement, charIndex, currentSkill.length);
+          charIndex++;
+
+          if (charIndex > currentSkill.length) {
+            typing = false;
+            setTimeout(typeSkill, 2000); // Wait before starting to delete
+            return;
+          }
+        } else {
+          typingTextElement.textContent = currentSkill.slice(0, charIndex);  // Skills with leading space
+          charIndex--;
+
+          if (charIndex < 0) {
+            typing = true;
+            skillIndex = (skillIndex + 1) % skills.length;
+            typingTextElement.style.display = 'none'; // Hide typing-text between skills
+            setTimeout(typeSkill, 500); // Wait before typing the next skill
+            return;
+          }
+        }
+        setTimeout(typeSkill, typing ? 100 : 50); // Typing speed vs deleting speed
+      }
+    }
+
+    // Initially hide the skill cursor
+    skillCursor.style.display = 'none';
+
+    // Start typing immediately after a short delay
+    setTimeout(typeSkill, 500);
+  </script>
 </body>
 </html>
