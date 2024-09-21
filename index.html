@@ -13,10 +13,12 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects/Work</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="career.html">My Path</a></li>
+        <li><a href="projects.html">Selected Work</a></li>
         <li><a href="resume.html">My Resume</a></li>
         <li><a href="about.html">About Me</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html">Get In Touch</a></li>
       </ul>
     </nav>
   </header>
@@ -36,7 +38,7 @@
 
     <!-- Button for projects, fixed below the animation -->
     <div class="button-container">
-      <a href="projects.html" class="btn">View My Projects</a>
+      <a href="projects.html" class="btn">View My Work & Projects</a>
     </div>
   </section>
 
@@ -46,11 +48,11 @@
 
   <!-- JavaScript for typing effect -->
   <script>
-    const phrase = "I am a robotics engineer with expertise in -";  // Static text without space
+    const phrase = "user:~$ I am a robotics engineer with expertise in: ";  // Static text without space
     const skills = [
       " autonomous mobile robots",  // Add leading space to each skill
       " robotics software development",
-      " hardware electronics system design",
+      " robotics system design",
       " hardware-software integration"
     ];
 
@@ -67,16 +69,12 @@
     // Initialize empty content and hide the typing text initially
     staticTextElement.textContent = "";
     typingTextElement.style.display = 'none'; // Hide typing-text until typing starts
-
-    function typeCenterAlignText(text, element, index, maxIndex) {
-      // For center alignment while typing, calculate padding dynamically based on remaining text length
-      const totalChars = maxIndex;
-      const currentChars = index;
-      const spacesToPad = Math.floor((totalChars - currentChars) / 2);
-      const padding = '&nbsp;'.repeat(spacesToPad);
-      element.innerHTML = padding + text.slice(0, index);
+    
+    function typeCenterAlignText(text, element, index) {
+      // Type text without trying to manage padding, just type normally
+      element.innerHTML = text.slice(0, index);
     }
-
+    
     function typeSkill() {
       if (isTypingPhrase) {
         typeCenterAlignText(phrase, staticTextElement, phraseIndex, phrase.length);
