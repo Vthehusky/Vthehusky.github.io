@@ -40,16 +40,13 @@ nav ul li a {
 
 /* Terminal style with Ubuntu Mono font */
 #terminal {
+  display: flex;
   font-family: 'Ubuntu Mono', monospace;
   background-color: black;
   color: green;
-  padding: 15px;
-  display: inline-block;
-  margin-top: 20px;
-  border-radius: 5px;
-  width: fit-content;
-  white-space: nowrap;
-  margin: 0 auto; /* Center the text */
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
 }
 
 #static-wrapper {

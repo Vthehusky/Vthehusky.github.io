@@ -48,7 +48,7 @@
 
   <!-- JavaScript for typing effect -->
   <script>
-    const phrase = "user:~$ I am a robotics engineer with expertise in -";  // Static text without space
+    const phrase = "user:~$ I am a robotics engineer with expertise in: ";  // Static text without space
     const skills = [
       " autonomous mobile robots",  // Add leading space to each skill
       " robotics software development",
@@ -69,16 +69,12 @@
     // Initialize empty content and hide the typing text initially
     staticTextElement.textContent = "";
     typingTextElement.style.display = 'none'; // Hide typing-text until typing starts
-
-    function typeCenterAlignText(text, element, index, maxIndex) {
-      // For center alignment while typing, calculate padding dynamically based on remaining text length
-      const totalChars = maxIndex;
-      const currentChars = index;
-      const spacesToPad = Math.floor((totalChars - currentChars) / 2);
-      const padding = '&nbsp;'.repeat(spacesToPad);
-      element.innerHTML = padding + text.slice(0, index);
+    
+    function typeCenterAlignText(text, element, index) {
+      // Type text without trying to manage padding, just type normally
+      element.innerHTML = text.slice(0, index);
     }
-
+    
     function typeSkill() {
       if (isTypingPhrase) {
         typeCenterAlignText(phrase, staticTextElement, phraseIndex, phrase.length);
