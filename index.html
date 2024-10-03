@@ -43,24 +43,42 @@
   </section>
 
   <footer>
+    <!-- Social Media Icons with Links -->
+    <div class="social-icons">
+      <div class="icon-item">
+        <a href="https://www.linkedin.com/in/vinay-prakash-mtu/" target="_blank">
+          <img src="icons/linkedin_white.png" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="icon-item">
+        <a href="https://bitbucket.org/vinaypra/workspace/repositories/" target="_blank">
+          <img src="icons/bitbucket_white.png" alt="Bitbucket">
+        </a>
+      </div>
+      <div class="icon-item">
+        <a href="https://github.com/Vthehusky?tab=repositories" target="_blank">
+          <img src="icons/github_white.jpg" alt="GitHub">
+        </a>
+      </div>
+    </div>
     <p>&copy; 2024 Vinay Prakash. All rights reserved.</p>
   </footer>
 
   <!-- JavaScript for typing effect -->
   <script>
-    const phrase = "user:~$ I am a robotics engineer with expertise in: ";  // Static text without space
+    const phrase = "user:~$ I am a robotics engineer with expertise in: ";
     const skills = [
-  " software development",
-  " system design",
-  " hardware-software integration",
-  " embedded systems programming",
-  " autonomous navigation and control",
-  " sensor integration and data fusion",
-  " control systems and kinematics",
-  " computer vision and image processing",
-  " machine learning and AI",
-  " 3D modeling and printing"
-  ];
+      " software development",
+      " system design",
+      " hardware-software integration",
+      " embedded systems programming",
+      " autonomous navigation and control",
+      " sensor integration and data fusion",
+      " control systems and kinematics",
+      " computer vision and image processing",
+      " machine learning and AI",
+      " 3D modeling and printing"
+    ];
 
     let phraseIndex = 0;
     let skillIndex = 0;
@@ -75,15 +93,15 @@
     // Initialize empty content and hide the typing text initially
     staticTextElement.textContent = "";
     typingTextElement.style.display = 'none'; // Hide typing-text until typing starts
-    
+
     function typeCenterAlignText(text, element, index) {
       // Type text without trying to manage padding, just type normally
       element.innerHTML = text.slice(0, index);
     }
-    
+
     function typeSkill() {
       if (isTypingPhrase) {
-        typeCenterAlignText(phrase, staticTextElement, phraseIndex, phrase.length);
+        typeCenterAlignText(phrase, staticTextElement, phraseIndex);
         phraseIndex++;
         if (phraseIndex >= phrase.length) {
           isTypingPhrase = false; // Once phrase is typed out, start typing skills
@@ -102,7 +120,7 @@
         }
 
         if (typing) {
-          typeCenterAlignText(currentSkill, typingTextElement, charIndex, currentSkill.length);
+          typeCenterAlignText(currentSkill, typingTextElement, charIndex);
           charIndex++;
 
           if (charIndex > currentSkill.length) {

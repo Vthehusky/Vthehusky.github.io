@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -102,7 +103,6 @@ nav ul li a {
   color: #fff;
 }
 
-/* Ensure the button is fixed below the typing animation */
 .button-container {
   margin-top: 30px;
   text-align: center; /* Center button container */
@@ -116,6 +116,35 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+/* Social Media Icons Styling */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  margin-bottom: 10px;
+}
+
+.icon-item {
+  /*margin: 0 15px;*/
+  margin: 0;
+}
+
+.icon-item a {
+  display: inline-block;
+}
+
+.icon-item img {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.icon-item a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 .btn {
