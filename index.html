@@ -2,24 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Robotics Engineer Portfolio</title>
   <!-- Import Ubuntu Mono font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+  <!-- Favicon -->
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="career.html">My Path</a></li>
-        <li><a href="projects.html">Selected Work</a></li>
-        <li><a href="resume.html">My Resume</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="contact.html">Get In Touch</a></li>
-      </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <a href="index.html">Vinay Prakash</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="career.html">My Path</a></li>
+          <li><a href="projects.html">Selected Work</a></li>
+          <li><a href="resume.html">My Resume</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="contact.html">Get In Touch</a></li>
+        </ul>
+        <div class="hamburger" aria-label="Toggle navigation" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -46,26 +58,27 @@
     <!-- Social Media Icons with Links -->
     <div class="social-icons">
       <div class="icon-item">
-        <a href="https://www.linkedin.com/in/vinay-prakash-mtu/" target="_blank">
-          <img src="icons/linkedin_white.png" alt="LinkedIn">
+        <a href="https://www.linkedin.com/in/vinay-prakash-mtu/" target="_blank" aria-label="LinkedIn">
+          <img src="icons/linkedin_white.svg" alt="LinkedIn">
         </a>
       </div>
       <div class="icon-item">
-        <a href="https://bitbucket.org/vinaypra/workspace/repositories/" target="_blank">
-          <img src="icons/bitbucket_white.png" alt="Bitbucket">
+        <a href="https://bitbucket.org/vinaypra/workspace/repositories/" target="_blank" aria-label="Bitbucket">
+          <img src="icons/bitbucket_white.svg" alt="Bitbucket">
         </a>
       </div>
       <div class="icon-item">
-        <a href="https://github.com/Vthehusky?tab=repositories" target="_blank">
-          <img src="icons/github_white.jpg" alt="GitHub">
+        <a href="https://github.com/Vthehusky?tab=repositories" target="_blank" aria-label="GitHub">
+          <img src="icons/github_white.svg" alt="GitHub">
         </a>
       </div>
     </div>
     <p>&copy; 2024 Vinay Prakash. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript for typing effect -->
+  <!-- JavaScript for typing effect and hamburger menu -->
   <script>
+    // Typing Effect Script
     const phrase = "user:~$ I am a robotics engineer with expertise in: ";
     const skills = [
       " software development",
@@ -149,6 +162,24 @@
 
     // Start typing immediately after a short delay
     setTimeout(typeSkill, 500);
+
+    // Hamburger Menu Script
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Toggle navigation on click
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('toggle');
+    });
+
+    // Toggle navigation on Enter key press for accessibility
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('toggle');
+      }
+    });
   </script>
 </body>
 </html>

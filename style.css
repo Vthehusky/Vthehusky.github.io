@@ -17,29 +17,80 @@ body {
   flex-direction: column;
 }
 
+/* Header Styles */
 header {
   background: rgba(0, 0, 0, 0.8); /* Semi-transparent header */
   color: #fff;
-  padding: 10px 0;
-  text-align: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
 }
 
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
+.logo a {
   color: #fff;
   text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* Terminal style with Ubuntu Mono font */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00aced; /* Highlight color on hover */
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.toggle span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.toggle span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Terminal Style with Ubuntu Mono Font */
 #terminal {
   display: flex;
   font-family: 'Ubuntu Mono', monospace;
@@ -48,6 +99,10 @@ nav ul li a {
   flex-direction: column;
   align-items: center; /* Center horizontally */
   justify-content: center; /* Center vertically */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  margin: 20px auto;
 }
 
 #static-wrapper {
@@ -80,7 +135,7 @@ nav ul li a {
 
 #intro {
   position: relative;
-  padding: 100px 0;
+  padding: 100px 20px;
   text-align: center;
   color: #fff;
   flex-grow: 1;
@@ -97,10 +152,9 @@ nav ul li a {
   z-index: -1;
 }
 
-#intro h1, #intro p {
-  position: relative;
-  z-index: 2;
-  color: #fff;
+#intro h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .button-container {
@@ -108,28 +162,39 @@ nav ul li a {
   text-align: center; /* Center button container */
 }
 
+.btn {
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* Footer Styles */
 footer {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   text-align: center;
   padding: 20px;
-  position: fixed;
-  bottom: 0;
+  position: relative;
   width: 100%;
 }
 
-/* Social Media Icons Styling */
 .social-icons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 200px;
+  gap: 200px; /* Adjusted gap for spacing */
   margin-bottom: 10px;
-}
-
-.icon-item {
-  /*margin: 0 15px;*/
-  margin: 0;
 }
 
 .icon-item a {
@@ -147,12 +212,96 @@ footer {
   opacity: 0.8;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive Styles */
+
+/* Tablets and Below */
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  #terminal {
+    padding: 15px;
+  }
+
+  #intro h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .social-icons {
+    gap: 100px;
+  }
+
+  .icon-item img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 600px) {
+  #intro {
+    padding: 80px 10px;
+  }
+
+  #intro h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .social-icons {
+    gap: 50px;
+  }
+
+  .icon-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #terminal {
+    padding: 10px;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .icon-item img {
+    width: 40px;
+    height: 40px;
+  }
 }
