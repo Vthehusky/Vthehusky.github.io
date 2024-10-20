@@ -252,6 +252,7 @@ footer {
   padding: 20px;
   position: relative;
   width: 100%;
+  margin-top: auto; /* Ensures footer stays at the bottom */
 }
 
 .social-icons {
@@ -290,6 +291,7 @@ html {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 675px;
 }
 
 #contact-form h1 {
@@ -340,6 +342,27 @@ html {
 .contact-form input[type="email"]::placeholder,
 .contact-form textarea::placeholder {
   color: #ccc;
+}
+
+/* Phone Input Styling */
+.phone-input {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.phone-input select,
+.phone-input input[type="tel"] {
+  width: 48%; /* Ensure both select and input fields are the same width */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: #fff;
+}
+
+.phone-input select {
+  white-space: normal; /* Ensure the text doesn't get clipped */
 }
 
 /* Responsive Styles */
@@ -428,5 +451,17 @@ html {
   .icon-item img {
     width: 40px;
     height: 40px;
+  }
+
+  /* Contact form adjustments */
+  #contact-form {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .phone-input {
+    flex-direction: column;
   }
 }
