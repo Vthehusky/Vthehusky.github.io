@@ -273,34 +273,24 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Contact Form Section Styling - MODIFIED for desired look */
+/* Contact Form Section Styling - Background Color Removed */
 #contact-form {
   max-width: 700px;
   width: 90%;
   margin: 50px auto;
-  padding: 30px; /* Increased padding a bit */
-  background-color: #4a3b31; /* Brownish background from your example image */
+  padding: 30px;
+  background-color: transparent; /* CHANGED: Removed the specific background color */
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  color: #f0f0f0;
-}
-
-#contact-form h1 {
-  text-align: center;
-  color: #ffffff; /* White heading */
-  margin-bottom: 10px;
-}
-
-#contact-form p {
-  text-align: center;
-  color: #f0f0f0; /* Lighter paragraph text */
-  margin-bottom: 25px;
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* You might want to keep or remove this */
+  color: #f0f0f0; /* Text color for any direct children like H1/P if re-added */
 }
 
 /* Styling attempts for HubSpot form elements to match the desired look */
 
-.hbspt-form {
+.hbspt-form { /* This is a common wrapper HubSpot might use */
   width: 100% !important;
+  /* If the form itself has a background we want to remove (and css:"" doesn't work): */
+  /* background-color: transparent !important; */
 }
 
 .hs-form-field,
@@ -310,16 +300,17 @@ html {
   padding: 0 !important;
   max-width: 100% !important;
   width: 100% !important;
+  background-color: transparent !important; /* Ensure fieldset backgrounds are transparent */
 }
 
 /* Labels */
 .hs-form-field label,
 .hbspt-form label {
   display: block !important;
-  color: #f0f0f0 !important; /* Light grey / Off-white label color */
+  color: #f0f0f0 !important;
   margin-bottom: 8px !important;
   font-weight: bold;
-  font-size: 0.95rem; /* Slightly smaller label */
+  font-size: 0.95rem;
 }
 
 /* Input fields, textareas, and selects */
@@ -330,16 +321,16 @@ html {
 .hbspt-form textarea,
 .hbspt-form select {
   width: 100% !important;
-  padding: 12px 15px !important; /* Adjusted padding */
+  padding: 12px 15px !important;
   margin-top: 0 !important;
-  border-radius: 4px !important; /* Slightly less rounded */
-  border: 1px solid #555 !important; /* Slightly darker border, adjust if needed */
-  background-color: #383838 !important; /* Dark grey background like your example */
+  border-radius: 4px !important;
+  border: 1px solid #555 !important;
+  background-color: #383838 !important; /* Dark grey background from desired look */
   color: #ffffff !important; /* White text when typing */
   box-sizing: border-box !important;
   font-size: 1rem;
-  outline: none !important; /* Remove default outline */
-  box-shadow: none !important; /* Remove default box-shadow */
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Placeholder text color */
@@ -349,7 +340,7 @@ html {
 .hbspt-form input[type="tel"]::placeholder,
 .hbspt-form textarea::placeholder {
   color: #ffffff !important; /* White placeholder text */
-  opacity: 0.7; /* Slightly transparent placeholder */
+  opacity: 0.7;
 }
 
 /* Focus state - remove or make very subtle highlight */
@@ -360,7 +351,7 @@ html {
 .hbspt-form textarea:focus,
 .hbspt-form select:focus {
   border-color: #666 !important; /* Subtle border color change on focus */
-  box-shadow: none !important; /* No glow effect */
+  box-shadow: none !important;
 }
 
 /* Phone input specific styling */
@@ -381,20 +372,20 @@ html {
 
 /* Submit Button */
 .hs-button.primary,
-.actions input[type="submit"], /* HubSpot might use this selector too */
+.actions input[type="submit"],
 .hbspt-form input[type="submit"],
 .hbspt-form button[type="submit"] {
   width: 100% !important;
   padding: 12px 20px !important;
   background-color: #007bff !important; /* Bright blue like your example */
-  color: #ffffff !important; /* White text */
+  color: #ffffff !important;
   border: none !important;
-  border-radius: 4px !important; /* Slightly less rounded */
+  border-radius: 4px !important;
   cursor: pointer !important;
   transition: background-color 0.3s ease, transform 0.2s ease !important;
   font-size: 1.1rem !important;
   font-weight: bold;
-  margin-top: 15px !important; /* More space above the button */
+  margin-top: 15px !important;
 }
 
 .hs-button.primary:hover,
@@ -402,8 +393,9 @@ html {
 .hbspt-form input[type="submit"]:hover,
 .hbspt-form button[type="submit"]:hover {
   background-color: #0056b3 !important; /* Darker blue for hover */
-  transform: none !important; /* Remove hover scale if not desired */
+  transform: none !important;
 }
+
 
 /* Responsive Styles */
 @media (max-width: 992px) {
@@ -472,7 +464,7 @@ html {
     height: 48px;
   }
 
-  #contact-form {
+  #contact-form { /* Ensure responsive adjustments for contact form section */
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -516,7 +508,7 @@ html {
     margin: 10px 0;
   }
 
-  #contact-form {
+  #contact-form { /* Ensure responsive adjustments for contact form section */
     width: 95%;
     padding: 15px;
   }
