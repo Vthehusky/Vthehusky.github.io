@@ -20,7 +20,7 @@ body {
 
 body.contact-page {
   background-image: url('bb8.png'); /* Specific background for Contact page */
-  background-size: cover;
+  background-size: cover; /* Ensure these are repeated for specificity if needed */
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -33,7 +33,7 @@ body::before {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
-  z-index: -1;
+  z-index: -1; /* Make sure it's behind content */
 }
 
 body.contact-page::before {
@@ -93,39 +93,43 @@ header {
   top: 100%;
   left: 0;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Added background to dropdown container */
+  border-radius: 0 0 5px 5px; /* Optional: rounded corners for bottom */
   opacity: 0; /* Initially hidden */
   visibility: hidden; /* Prevent interaction */
-  transform: translateY(-20px); /* Start slightly above */
-  transition: all 0.3s ease;
+  transform: translateY(-10px); /* Start slightly above for slide-down effect */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Added visibility transition */
+  min-width: 180px; /* Ensure dropdown has some width */
+  z-index: 1001; /* Ensure dropdown is above other content */
 }
 
-/* Show the dropdown with sliding and fading effect */
 .nav-links li:hover .dropdown {
   display: block;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Slide down into position */
+  transform: translateY(0);
 }
 
-/* Each dropdown item with its own background */
 .dropdown li {
-  margin: 5px 0;
+  margin: 0; /* Remove margin from individual items if background is on parent */
+  width: 100%; /* Make list items take full width of dropdown */
 }
 
 .dropdown a {
   display: block;
-  padding: 12px 20px; /* Add padding to prevent text from touching the edges */
+  padding: 12px 20px;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent individual item backgrounds */
-  border-radius: 10px; /* Rounded corners */
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  white-space: nowrap; /* Prevent line break for long section names */
+  /* background-color: rgba(0, 0, 0, 0.5); /* Removed individual background if parent has it */
+  /* border-radius: 10px; /* Removed if parent handles shape */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Kept transform for text hover */
+  white-space: nowrap;
 }
 
 .dropdown a:hover {
-  background-color: rgba(0, 0, 0, 0.7); /* Darker hover effect */
-  transform: scale(1.05); /* Slight scale effect on hover */
+  background-color: rgba(0, 172, 237, 0.2); /* Lighter hover effect for items */
+  /* transform: scale(1.05); /* Optional: slight scale effect on hover */
 }
+
 
 /* Hamburger Menu Styles */
 .hamburger {
@@ -206,6 +210,7 @@ header {
   flex-grow: 1;
 }
 
+/* This ::before was for intro, but body::before is now global. Remove if redundant or adjust.
 #intro::before {
   content: '';
   position: absolute;
@@ -213,9 +218,10 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  background: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
+*/
 
 #intro h1 {
   font-size: 2.5rem;
@@ -283,90 +289,138 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Contact Form Section */
+/* Contact Form Section Styling - MODIFIED/ADDED */
 #contact-form {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  max-width: 700px; /* Increased max-width, adjust as you like */
+  width: 90%;       /* Make it take up most of the viewport width on smaller screens */
+  margin: 50px auto; /* Centers the block horizontally */
+  padding: 25px;     /* Slightly increased padding */
+  background-color: rgba(30, 30, 30, 0.85); /* Darker, more opaque background for better readability */
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-left: 675px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: #f0f0f0; /* Lighter text color for better contrast on dark background */
 }
 
 #contact-form h1 {
   text-align: center;
-  color: #fff;
+  color: #fff; /* White for the main heading */
+  margin-bottom: 10px;
 }
 
 #contact-form p {
   text-align: center;
-  color: #ccc;
+  color: #ccc; /* Light grey for the paragraph */
+  margin-bottom: 25px;
 }
 
-.contact-form label {
-  display: block;
-  color: #fff;
-  margin-top: 10px;
+/* Styling attempts for HubSpot form elements */
+/* These will only work if HubSpot doesn't use an iframe OR if css:"" parameter in contact.html works */
+
+/* General HubSpot form wrapper if it exists */
+.hbspt-form {
+  width: 100% !important;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #333;
-  color: #fff;
+/* Fieldsets within the HubSpot form */
+.hs-form-field, /* Common HubSpot class for field containers */
+.hbspt-form fieldset {
+  margin-bottom: 20px !important; /* More space between fields/groups */
+  border: none !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
-.contact-form button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  background-color: #00aced;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Labels within the HubSpot form */
+.hs-form-field label,
+.hbspt-form label {
+  display: block !important;
+  color: #e0e0e0 !important; /* Lighter label color */
+  margin-bottom: 8px !important;
+  font-weight: bold;
 }
 
-.contact-form button:hover {
-  background-color: #007bb5;
+/* Input fields, textareas, and selects */
+.hs-input, /* Common HubSpot class for inputs */
+.hbspt-form input[type="text"],
+.hbspt-form input[type="email"],
+.hbspt-form input[type="tel"],
+.hbspt-form textarea,
+.hbspt-form select {
+  width: 100% !important;
+  padding: 12px !important; /* More padding */
+  margin-top: 0 !important; /* Remove top margin if label provides it */
+  border-radius: 5px !important;
+  border: 1px solid #555 !important; /* Darker border */
+  background-color: #2a2a2a !important; /* Darker field background */
+  color: #f0f0f0 !important; /* Lighter text color */
+  box-sizing: border-box !important;
+  font-size: 1rem;
 }
 
-.contact-form input[type="text"]::placeholder,
-.contact-form input[type="email"]::placeholder,
-.contact-form textarea::placeholder {
-  color: #ccc;
+/* Placeholder text color */
+.hs-input::placeholder,
+.hbspt-form input[type="text"]::placeholder,
+.hbspt-form input[type="email"]::placeholder,
+.hbspt-form input[type="tel"]::placeholder,
+.hbspt-form textarea::placeholder {
+  color: #888 !important; /* Lighter placeholder */
 }
 
-/* Phone Input Styling */
-.phone-input {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+/* Focus state for inputs - more visible highlight */
+.hs-input:focus,
+.hbspt-form input[type="text"]:focus,
+.hbspt-form input[type="email"]:focus,
+.hbspt-form input[type="tel"]:focus,
+.hbspt-form textarea:focus,
+.hbspt-form select:focus {
+  border-color: #00aced !important; /* Your preferred highlight color */
+  box-shadow: 0 0 8px rgba(0, 172, 237, 0.5) !important; /* Glow effect */
+  outline: none !important; /* Remove default browser outline */
 }
 
-.phone-input select,
-.phone-input input[type="tel"] {
-  width: 48%; /* Ensure both select and input fields are the same width */
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #333;
-  color: #fff;
+/* Phone input specific styling (if HubSpot structure allows targeting) */
+.hs-phone-number, /* HubSpot often uses specific classes like this */
+.inputs-list.multi-field.phone-number { /* Another possible structure */
+    display: flex !important;
+    flex-wrap: wrap !important; /* Allow wrapping on small screens */
+    gap: 10px !important;
 }
 
-.phone-input select {
-  white-space: normal; /* Ensure the text doesn't get clipped */
+.hs-phone-number select,
+.hs-phone-number input[type="tel"],
+.inputs-list.multi-field.phone-number select,
+.inputs-list.multi-field.phone-number input[type="tel"] {
+    flex: 1 1 150px !important; /* Allow them to grow and shrink, with a base */
+    min-width: 120px !important;
 }
 
-/* Responsive Styles */
+/* Submit Button */
+.hs-button.primary, /* Common HubSpot button class */
+.hbspt-form input[type="submit"],
+.hbspt-form button[type="submit"] {
+  width: 100% !important;
+  padding: 12px 20px !important;
+  background-color: #00aced !important; /* Your theme color */
+  color: #fff !important;
+  border: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+  font-size: 1.1rem !important;
+  font-weight: bold;
+  margin-top: 10px !important; /* Space above the button */
+}
 
+.hs-button.primary:hover,
+.hbspt-form input[type="submit"]:hover,
+.hbspt-form button[type="submit"]:hover {
+  background-color: #007bb5 !important; /* Darker hover for your theme color */
+  transform: scale(1.02) !important;
+}
+
+
+/* Your existing Responsive Styles */
 /* Tablets and Below */
 @media (max-width: 992px) {
   .nav-links {
@@ -375,9 +429,9 @@ html {
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
     position: absolute;
-    top: 60px;
+    top: 60px; /* Adjusted to match header height */
     left: 0;
-    padding: 20px 0;
+    padding: 10px 0; /* Reduced padding */
   }
 
   .nav-links.active {
@@ -385,8 +439,28 @@ html {
   }
 
   .nav-links li {
-    margin: 15px 0;
+    margin: 10px 0; /* Reduced margin */
     text-align: center;
+  }
+
+  /* Adjust dropdown positioning for mobile */
+  .nav-links li:hover .dropdown {
+    position: static; /* Change from absolute to static */
+    transform: none; /* Reset transform */
+    opacity: 1;
+    visibility: visible;
+    display: block; /* Ensure it's block for centering */
+    background-color: transparent; /* Remove parent background to see individual item backgrounds */
+  }
+
+  .dropdown li {
+    margin: 5px auto; /* Center items if needed or adjust */
+    width: fit-content; /* Adjust width for dropdown items */
+  }
+
+  .dropdown a {
+    background-color: rgba(30, 30, 30, 0.7); /* Slightly different background for visibility */
+    padding: 10px 15px;
   }
 
   .hamburger {
@@ -407,12 +481,20 @@ html {
   }
 
   .social-icons {
-    gap: 100px;
+    gap: 100px; /* Adjusted from 100px, check if this was intended */
   }
 
   .icon-item img {
     width: 48px;
     height: 48px;
+  }
+
+  /* Responsive adjustments for contact form section */
+  #contact-form {
+    width: 90%; /* Ensure it's responsive */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
   }
 }
 
@@ -432,7 +514,8 @@ html {
   }
 
   .social-icons {
-    gap: 50px;
+    gap: 50px; /* Further adjust gap for mobile */
+    flex-wrap: wrap; /* Allow icons to wrap if needed */
   }
 
   .icon-item img {
@@ -442,26 +525,38 @@ html {
 
   #terminal {
     padding: 10px;
+    font-size: 1rem; /* Adjust terminal text size for mobile */
+  }
+  #static-text, #typing-text {
+    font-size: 1rem; /* Adjust typing text size for mobile */
   }
 
   .nav-links li {
     margin: 10px 0;
   }
 
-  .icon-item img {
-    width: 40px;
-    height: 40px;
-  }
-
   /* Contact form adjustments */
   #contact-form {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
+    width: 95%; /* More width on very small screens */
     padding: 15px;
   }
 
-  .phone-input {
-    flex-direction: column;
+  /* Phone input stacking for mobile */
+  .hs-phone-number,
+  .inputs-list.multi-field.phone-number {
+    flex-direction: column !important;
+    gap: 0px !important; /* Remove gap when stacked if preferred */
+  }
+
+  .hs-phone-number select,
+  .hs-phone-number input[type="tel"],
+  .inputs-list.multi-field.phone-number select,
+  .inputs-list.multi-field.phone-number input[type="tel"] {
+      width: 100% !important;
+      margin-bottom: 15px !important; /* Add margin between stacked phone fields */
+  }
+  .hs-phone-number select:last-child, /* Remove margin from last element in stack */
+  .hs-phone-number input[type="tel"]:last-child {
+      margin-bottom: 0 !important;
   }
 }
