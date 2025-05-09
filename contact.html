@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact - Vinay Prakash</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link rel="stylesheet" href="style.css"> </head>
 <body class="contact-page">
   <header>
     <nav>
@@ -44,8 +43,18 @@
     <h1>Contact Me</h1>
     <p>I'd love to hear from you! Please fill out the form below to get in touch.</p>
 
-    <script src="https://js-na2.hsforms.net/forms/embed/242734286.js" defer></script>
     <div class="hs-form-frame" data-region="na2" data-form-id="f5258c9f-bc18-44d4-b09e-a334be17f54c" data-portal-id="242734286"></div>
+
+    <script charset="utf-8" type="text/javascript" src="https://js-na2.hsforms.net/forms/embed/v2.js"></script>
+    <script>
+      hbspt.forms.create({
+        region: "na2",
+        portalId: "242734286",
+        formId: "f5258c9f-bc18-44d4-b09e-a334be17f54c",
+        target: '.hs-form-frame', // Explicitly target the div above
+        css: "" // Attempt to strip HubSpot's default styles (test if this helps)
+      });
+    </script>
     </section>
 
   <footer>
@@ -70,11 +79,10 @@
   </footer>
 
   <script>
-    // Hamburger menu toggle functionality
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger && navLinks) { // Check if elements exist before adding listeners
+    if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
           navLinks.classList.toggle('active');
           hamburger.classList.toggle('toggle');
