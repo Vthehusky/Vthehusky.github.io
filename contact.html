@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact - Vinay Prakash</title>
-  <link rel="stylesheet" href="style.css"> </head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="icon" href="icons/favicon_1.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body class="contact-page">
   <header>
     <nav>
@@ -13,22 +17,12 @@
           <a href="index.html">Vinay Prakash</a>
         </div>
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a> <ul class="dropdown">
-              <li><a href="my_path.html">My Path</a></li>
-              <li><a href="achievements.html">Achievements</a></li>
-            </ul>
-          </li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="#">Selected Work</a>
-            <ul class="dropdown">
-              <li><a href="professional_work.html">Professional Work</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="blog.html">Blog</a></li>
-            </ul>
-          </li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="portfolio.html"><i class="fas fa-briefcase"></i>Portfolio</a></li>
+          <li><a href="about.html"><i class="fas fa-user"></i>About</a></li>
+          <li><a href="resume.html"><i class="fas fa-file-alt"></i>Resume</a></li>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i>Contact</a></li>
         </ul>
         <div class="hamburger" aria-label="Toggle navigation" tabindex="0">
           <span></span>
@@ -41,18 +35,17 @@
 
   <section id="contact-form">
     <div class="hs-form-frame" data-region="na2" data-form-id="f5258c9f-bc18-44d4-b09e-a334be17f54c" data-portal-id="242734286"></div>
-
     <script charset="utf-8" type="text/javascript" src="https://js-na2.hsforms.net/forms/embed/v2.js"></script>
     <script>
       hbspt.forms.create({
         region: "na2",
         portalId: "242734286",
         formId: "f5258c9f-bc18-44d4-b09e-a334be17f54c",
-        target: '.hs-form-frame', // Explicitly target the div above
-        css: "" // Attempt to strip HubSpot's default styles (test if this helps)
+        target: '.hs-form-frame',
+        css: ""
       });
     </script>
-    </section>
+  </section>
 
   <footer>
     <div class="social-icons">
@@ -76,21 +69,10 @@
   </footer>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
+    const hamburger = document.querySelector('.hamburger'); const navLinks = document.querySelector('.nav-links');
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-          hamburger.classList.toggle('toggle');
-        });
-
-        hamburger.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                navLinks.classList.toggle('active');
-                hamburger.classList.toggle('toggle');
-            }
-        });
+      hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); hamburger.classList.toggle('toggle'); });
+      hamburger.addEventListener('keypress', (e) => { if (e.key === 'Enter') { navLinks.classList.toggle('active'); hamburger.classList.toggle('toggle'); } });
     }
   </script>
 </body>

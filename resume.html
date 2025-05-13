@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Resume - Vinay Prakash</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="icon" href="icons/favicon_1.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,32 +17,67 @@
           <a href="index.html">Vinay Prakash</a>
         </div>
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="#">About</a>
-            <ul class="dropdown">
-              <li><a href="my_path.html">My Path</a></li>
-              <li><a href="achievements.html">Achievements</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Selected Work</a>
-            <ul class="dropdown">
-              <li><a href="professional_work.html">Professional Work</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="blog.html">Blog</a></li>
-            </ul>
-          </li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="portfolio.html"><i class="fas fa-briefcase"></i>Portfolio</a></li>
+          <li><a href="about.html"><i class="fas fa-user"></i>About</a></li>
+          <li><a href="resume.html" class="active"><i class="fas fa-file-alt"></i>Resume</a></li>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
         </ul>
+        <div class="hamburger" aria-label="Toggle navigation" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
   </header>
 
-  <!-- Blank page for now -->
+  <main class="page-content resume-page-content-modifier">
+    <div class="resume-header-wrapper">
+      <div class="resume-header-container">
+        <h1>My Resume</h1>
+        <a href="resume/resume_fnuvinayprakash.pdf" class="resume-icon-download-btn" target="_blank" download="VinayPrakash_Resume.pdf" title="Download Resume">
+          <img src="icons/cloud-download.svg" alt="Download Resume Icon">
+        </a>
+      </div>
+    </div>
+
+    <div class="resume-pdf-container">
+      <iframe src="resume/resume_fnuvinayprakash.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH" class="resume-pdf-embed" title="Vinay Prakash Resume">
+          <p>Your browser does not support embedded PDFs. Please <a href="resume/resume_fnuvinayprakash.pdf" target="_blank" download="VinayPrakash_Resume.pdf">download the PDF</a> to view it.</p>
+      </iframe>
+    </div>
+
+  </main>
 
   <footer>
+    <div class="social-icons">
+      <div class="icon-item">
+        <a href="https://www.linkedin.com/in/vinay-prakash-mtu/" target="_blank" aria-label="LinkedIn">
+          <img src="icons/linkedin_white.svg" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="icon-item">
+        <a href="https://bitbucket.org/vinaypra/workspace/repositories/" target="_blank" aria-label="Bitbucket">
+          <img src="icons/bitbucket_white.svg" alt="Bitbucket">
+        </a>
+      </div>
+      <div class="icon-item">
+        <a href="https://github.com/Vthehusky?tab=repositories" target="_blank" aria-label="GitHub">
+          <img src="icons/github_white.svg" alt="GitHub">
+        </a>
+      </div>
+    </div>
     <p>&copy; 2024 Vinay Prakash. All rights reserved.</p>
   </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger'); const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); hamburger.classList.toggle('toggle'); });
+      hamburger.addEventListener('keypress', (e) => { if (e.key === 'Enter') { navLinks.classList.toggle('active'); hamburger.classList.toggle('toggle'); } });
+    }
+  </script>
 </body>
 </html>

@@ -20,9 +20,6 @@ body {
 
 body.contact-page {
   background-image: url('bb8.png'); /* Specific background for Contact page */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 body::before {
@@ -80,467 +77,281 @@ header {
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
+  padding-bottom: 5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-links a i { /* This is for Font Awesome icons in nav */
+  margin-right: 8px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #00aced;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-links a:hover {
   color: #00aced;
 }
 
-/* Dropdown Menu */
-.nav-links .dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 0 0 5px 5px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  min-width: 180px;
-  z-index: 1001;
+.nav-links a.active {
+  color: #00aced;
+  font-weight: bold;
 }
 
-.nav-links li:hover .dropdown {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.dropdown li {
-  margin: 0;
+.nav-links a.active::after {
   width: 100%;
 }
 
-.dropdown a {
-  display: block;
-  padding: 12px 20px;
-  color: #fff;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
+/* Dropdown Menu - Can be removed if no dropdowns are used */
+.nav-links .dropdown {
+  display: none; position: absolute; top: 100%; left: 0; padding: 0;
+  background-color: rgba(0,0,0,0.8); border-radius: 0 0 5px 5px;
+  opacity: 0; visibility: hidden; transform: translateY(-10px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+  min-width: 180px; z-index: 1001;
 }
-
-.dropdown a:hover {
-  background-color: rgba(0, 172, 237, 0.2);
-}
-
+.nav-links li:hover .dropdown { display: block; opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li { margin:0; width: 100%; }
+.dropdown a { display: block; padding: 12px 20px; color: #fff; transition: background-color .3s ease; white-space: nowrap; }
+.dropdown a i { margin-right: 8px; }
+.dropdown a::after { display: none; }
+.dropdown a:hover { background-color: rgba(0,172,237,0.2); color: #fff; }
 
 /* Hamburger Menu Styles */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+.hamburger { display: none; flex-direction: column; cursor: pointer; }
+.hamburger span { height: 3px; width: 25px; background: #fff; margin-bottom: 4px; border-radius: 5px; transition: all .3s ease; }
+.hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+.hamburger.toggle span:nth-child(2) { opacity: 0; }
+.hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
-.hamburger span {
-  height: 3px;
-  width: 25px;
-  background: #fff;
-  margin-bottom: 4px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.hamburger.toggle span:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger.toggle span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.toggle span:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Terminal Style */
-#terminal {
-  display: flex;
-  font-family: 'Ubuntu Mono', monospace;
-  background-color: black;
-  color: green;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 90%;
-  margin: 20px auto;
-}
-
-#static-wrapper, #skill-wrapper {
-  text-align: center;
-}
-
-#skill-wrapper {
-  margin-top: 20px;
-}
-
-#static-text, #typing-text {
-  font-size: 1.2rem;
-  display: inline-block;
-}
-
-.cursor {
-  display: inline-block;
-  background-color: green;
-  width: 8px;
-  height: 20px;
-  animation: blink 1s step-start infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
+/* Terminal Window Styles */
+#terminal-window { background-color: #1e1e1e; color: #0f0; font-family: 'Ubuntu Mono', monospace; border-radius: 8px; width: 750px; max-width: 90%; margin: 30px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.5); overflow: hidden; }
+.terminal-header { background-color: #333; padding: 8px 12px; display: flex; align-items: center; border-bottom: 1px solid #444; }
+.terminal-buttons { display: flex; }
+.terminal-button { width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
+.terminal-button.red { background-color: #ff5f57; } .terminal-button.yellow { background-color: #febc2e; } .terminal-button.green { background-color: #28c840; }
+.terminal-title { color: #ccc; font-size: .9rem; margin-left: auto; padding-right: 10px; }
+#terminal { padding: 15px; height: 100px; display: flex; flex-direction: column; justify-content: flex-start; overflow-y: auto; }
+#static-wrapper, #skill-wrapper { text-align: left; width: 100%; min-height: 25px; }
+#skill-wrapper { visibility: hidden; }
+#static-text, #typing-text { font-size: 1.1rem; display: inline-block; white-space: pre; line-height: 1.4; }
+.cursor { display: inline-block; background-color: #0f0; width: 8px; height: 1.2em; margin-left: 2px; animation: blink 1s step-start infinite; vertical-align: baseline; }
+@keyframes blink { 50% { opacity: 0; } }
 
 /* Intro Section */
-#intro {
-  position: relative;
-  padding: 100px 20px;
-  text-align: center;
-  color: #fff;
-  flex-grow: 1;
-}
-
-#intro h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.button-container {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.btn {
-  display: inline-block;
-  padding: 15px 25px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #555;
-  transform: scale(1.05);
+#intro { position: relative; padding: 60px 20px; text-align: center; color: #fff; flex-grow: 1; }
+#intro h1 { font-size: 2.5rem; margin-bottom: 20px; }
+#wave-emoji { display: inline-block; animation-name: wave-animation; animation-duration: 2.5s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; transform-origin: 70% 70%; }
+@keyframes wave-animation { 0%{transform:rotate(0deg)} 10%{transform:rotate(14deg)} 20%{transform:rotate(-8deg)} 30%{transform:rotate(14deg)} 40%{transform:rotate(-4deg)} 50%{transform:rotate(10deg)} 60%{transform:rotate(0deg)} 100%{transform:rotate(0deg)} }
+.button-container { margin-top: 30px; text-align: center; }
+.btn { display: inline-block; padding: 15px 25px; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px; text-align: center; font-size: 1rem; transition: background-color .3s ease, transform .3s ease; }
+.btn:hover { background-color: #555; transform: scale(1.05); }
+.btn .btn-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: middle;
 }
 
 /* Footer Styles */
-footer {
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  width: 100%;
-  margin-top: auto;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 200px;
-  margin-bottom: 10px;
-}
-
-.icon-item a {
-  display: inline-block;
-}
-
-.icon-item img {
-  width: 64px;
-  height: 64px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.icon-item a:hover img {
-  transform: scale(1.1);
-  opacity: 0.8;
-}
+footer { background: rgba(0,0,0,0.8); color: #fff; text-align: center; padding: 20px; position: relative; width: 100%; margin-top: auto; }
+.social-icons { display: flex; justify-content: center; align-items: center; gap: 200px; margin-bottom: 10px; }
+.icon-item a { display: inline-block; }
+.icon-item img { width: 64px; height: 64px; transition: transform .3s, opacity .3s; }
+.icon-item a:hover img { transform: scale(1.1); opacity: .8; }
 
 /* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+/* Contact Form Section Styling */
+#contact-form { max-width: 700px; width: 90%; margin: 50px auto; padding: 30px; background-color: rgba(255,255,255,0.15); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); color: #f0f0f0; }
+#contact-form h1 { text-align: center; color: #fff; margin-bottom: 10px; }
+#contact-form p { text-align: center; color: #f0f0f0; margin-bottom: 25px; }
+.hbspt-form { width:100%!important; background-color:transparent!important; }
+.hs-form-field, .hbspt-form fieldset { margin-bottom:20px!important; border:none!important; padding:0!important; max-width:100%!important; width:100%!important; background-color:transparent!important; }
+.hs-form-field label, .hbspt-form label { display:block!important; color:#f0f0f0!important; margin-bottom:8px!important; font-weight:bold!important; font-size:.95rem!important; }
+.hs-input, .hbspt-form input[type=text], .hbspt-form input[type=email], .hbspt-form input[type=tel], .hbspt-form textarea, .hbspt-form select { width:100%!important; padding:12px 15px!important; margin-top:0!important; border-radius:4px!important; border:1px solid #444!important; background-color:#2d2d2d!important; color:#fff!important; box-sizing:border-box!important; font-size:1rem!important; outline:none!important; box-shadow:none!important; }
+.hs-input::placeholder, .hbspt-form input[type=text]::placeholder, .hbspt-form input[type=email]::placeholder, .hbspt-form input[type=tel]::placeholder, .hbspt-form textarea::placeholder { color:#fff!important; opacity:.6!important; }
+.hs-input:focus, .hbspt-form input[type=text]:focus, .hbspt-form input[type=email]:focus, .hbspt-form input[type=tel]:focus, .hbspt-form textarea:focus, .hbspt-form select:focus { border-color:#555!important; box-shadow:none!important; }
+.hs-phone-number, .inputs-list.multi-field.phone-number { display:flex!important; flex-wrap:wrap!important; gap:10px!important; }
+.hs-phone-number select, .hs-phone-number input[type=tel], .inputs-list.multi-field.phone-number select, .inputs-list.multi-field.phone-number input[type=tel] { flex:1 1 150px!important; min-width:120px!important; }
+.hs-button.primary, .actions input[type=submit], .hbspt-form input[type=submit], .hbspt-form button[type=submit] { width:100%!important; padding:12px 20px!important; background-color:#007bff!important; color:#fff!important; border:none!important; border-radius:4px!important; cursor:pointer!important; transition:background-color .3s ease!important; font-size:1.1rem!important; font-weight:bold!important; margin-top:15px!important; text-transform:none!important; }
+.hs-button.primary:hover, .actions input[type=submit]:hover, .hbspt-form input[type=submit]:hover, .hbspt-form button[type=submit]:hover { background-color:#0056b3!important; transform:none!important; }
+
+/* Main page content basic styling */
+.page-content {
+  color: #fff;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 20px auto;
+  flex-grow: 1;
 }
 
-/* Contact Form Section Styling - Restored Background Color */
-#contact-form {
-  max-width: 700px; /* Adjusted from your original 600px, can be changed */
-  width: 90%;
-  margin: 50px auto; /* For centering */
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Keep shadow for depth */
-  color: #f0f0f0;
+.page-content h1 {
+  font-size: 2.2rem;
 }
 
-#contact-form h1 {
+.page-content p, .page-content ul, .page-content div:not(.resume-pdf-container):not(.resume-header-wrapper):not(.resume-header-container) {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Modifier for Resume Page content area */
+.page-content.resume-page-content-modifier {
+  max-width: none;
+  width: 100%;
+  padding: 20px 5%;
+  margin: 20px 0;
+}
+.page-content.resume-page-content-modifier h1 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 2.2rem;
+    text-align: left;
+}
+
+/* Wrapper for Resume H1 and Download Button for centering them together */
+.resume-header-wrapper {
   text-align: center;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-#contact-form p {
-  text-align: center;
-  color: #f0f0f0;
   margin-bottom: 25px;
+  border-bottom: 1px solid #555;
+  padding-bottom: 10px;
 }
 
-
-/* Styling attempts for HubSpot form elements (to match desired dark fields, white text, blue button) */
-
-.hbspt-form {
-  width: 100% !important;
-  background-color: transparent !important; /* Ensure form wrapper itself is transparent if it has a default */
+.resume-header-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px; /* Increased gap for better separation */
 }
 
-.hs-form-field,
-.hbspt-form fieldset {
-  margin-bottom: 20px !important;
-  border: none !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  background-color: transparent !important;
+/* Icon-only download button next to "My Resume" heading */
+.resume-icon-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px; /* Increased padding for a larger button */
+  background-color: rgba(255, 255, 255, 0.2); /* Light, semi-transparent background */
+  border-radius: 50%; /* Make it circular for a modern look */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
 }
 
-/* Labels */
-.hs-form-field label,
-.hbspt-form label {
-  display: block !important;
-  color: #f0f0f0 !important;
-  margin-bottom: 8px !important;
-  font-weight: bold !important;
-  font-size: 0.95rem !important;
+.resume-icon-download-btn:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Lighten on hover */
+  transform: scale(1.1);
 }
 
-/* Input fields, textareas, and selects */
-.hs-input,
-.hbspt-form input[type="text"],
-.hbspt-form input[type="email"],
-.hbspt-form input[type="tel"],
-.hbspt-form textarea,
-.hbspt-form select {
-  width: 100% !important;
-  padding: 12px 15px !important;
-  margin-top: 0 !important;
-  border-radius: 4px !important;
-  border: 1px solid #444 !important;
-  background-color: #2d2d2d !important; /* Dark grey background */
-  color: #ffffff !important; /* White text when typing */
-  box-sizing: border-box !important;
-  font-size: 1rem !important;
-  outline: none !important;
-  box-shadow: none !important;
+.resume-icon-download-btn img {
+  width: 35px; /* Increased icon size */
+  height: 35px;
+  display: block;
+  /* Filter to make SVG white if it's not already (assuming original is black or dark) */
+  filter: brightness(0) invert(1);
 }
 
-/* Placeholder text color */
-.hs-input::placeholder,
-.hbspt-form input[type="text"]::placeholder,
-.hbspt-form input[type="email"]::placeholder,
-.hbspt-form input[type="tel"]::placeholder,
-.hbspt-form textarea::placeholder {
-  color: #ffffff !important;
-  opacity: 0.6 !important;
+/* Styles for Resume Page PDF Embedding */
+.resume-pdf-container {
+  position: relative;
+  width: 100%;
+  max-width: 75vw;
+  margin: 0 auto;
 }
 
-/* Focus state - very subtle */
-.hs-input:focus,
-.hbspt-form input[type="text"]:focus,
-.hbspt-form input[type="email"]:focus,
-.hbspt-form input[type="tel"]:focus,
-.hbspt-form textarea:focus,
-.hbspt-form select:focus {
-  border-color: #555 !important;
-  box-shadow: none !important;
+.resume-pdf-embed {
+  width: 100%;
+  height: 85vh;
+  min-height: 700px;
+  border: 1px solid #555;
+  display: block;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
-
-/* Phone input specific styling */
-.hs-phone-number,
-.inputs-list.multi-field.phone-number {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-}
-
-.hs-phone-number select,
-.hs-phone-number input[type="tel"],
-.inputs-list.multi-field.phone-number select,
-.inputs-list.multi-field.phone-number input[type="tel"] {
-    flex: 1 1 150px !important;
-    min-width: 120px !important;
-}
-
-/* Submit Button */
-.hs-button.primary,
-.actions input[type="submit"],
-.hbspt-form input[type="submit"],
-.hbspt-form button[type="submit"] {
-  width: 100% !important;
-  padding: 12px 20px !important;
-  background-color: #007bff !important; /* Bright blue */
-  color: #ffffff !important;
-  border: none !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  transition: background-color 0.3s ease !important;
-  font-size: 1.1rem !important;
-  font-weight: bold !important;
-  margin-top: 15px !important;
-  text-transform: none !important;
-}
-
-.hs-button.primary:hover,
-.actions input[type="submit"]:hover,
-.hbspt-form input[type="submit"]:hover,
-.hbspt-form button[type="submit"]:hover {
-  background-color: #0056b3 !important; /* Darker blue for hover */
-  transform: none !important;
-}
-
 
 /* Responsive Styles */
-@media (max-width: 992px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
+@media (max-width: 992px) { /* Tablet */
+  .nav-links { display: none; flex-direction: column; width: 100%; background: rgba(0,0,0,0.9); position: absolute; top: 60px; left: 0; padding: 10px 0; }
+  .nav-links.active { display: flex; }
+  .nav-links li { margin: 10px 0; text-align: center; }
+  .nav-links a::after { display: none; }
+  .hamburger { display: flex; }
+
+  #terminal-window { width: auto; max-width: 90%; min-width: 0; margin: 20px auto; }
+  #terminal { padding: 10px; height: 90px; }
+  #static-text, #typing-text { font-size: 1rem; }
+  #intro h1 { font-size: 2rem; } #wave-emoji { font-size: inherit; }
+  .social-icons { gap: 100px; } .icon-item img { width: 48px; height: 48px; }
+  #contact-form { width:90%; margin-left:auto; margin-right:auto; padding:20px; }
+
+  .page-content { max-width: 90vw; padding: 15px; }
+  .page-content.resume-page-content-modifier {
+    max-width: none;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 10px 0;
+    padding: 15px 2.5%;
   }
-
-  .nav-links.active {
-    display: flex;
+  .resume-header-container {
+     gap: 15px;
   }
-
-  .nav-links li {
-    margin: 10px 0;
-    text-align: center;
+   .resume-icon-download-btn {
+    padding: 8px;
+   }
+   .resume-icon-download-btn img {
+    width: 20px;
+    height: 20px;
   }
-
-  .nav-links li:hover .dropdown {
-    position: static;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    display: block;
-    background-color: transparent;
+  .resume-pdf-container {
+    max-width: 85vw;
   }
-
-  .dropdown li {
-    margin: 5px auto;
-    width: fit-content;
-  }
-
-  .dropdown a {
-    background-color: rgba(30, 30, 30, 0.7);
-    padding: 10px 15px;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  #terminal {
-    padding: 15px;
-  }
-
-  #intro h1 {
-    font-size: 2rem;
-  }
-
-  .btn {
-    padding: 12px 20px;
-    font-size: 0.9rem;
-  }
-
-  .social-icons {
-    gap: 100px;
-  }
-
-  .icon-item img {
-    width: 48px;
-    height: 48px;
-  }
-
-  #contact-form {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-  }
+  .resume-pdf-embed { height: 80vh; min-height: 600px; }
 }
 
-@media (max-width: 600px) {
-  #intro {
-    padding: 80px 10px;
-  }
+@media (max-width: 600px) { /* Mobile */
+  #intro { padding: 40px 10px; } #intro h1 { font-size: 1.8rem; }
+  .social-icons { gap: 50px; flex-wrap: wrap; } .icon-item img { width: 40px; height: 40px; }
+  #terminal-window { max-width: 95%; margin: 15px auto; }
+  .terminal-header { padding: 6px 10px; } .terminal-button { width:10px; height:10px; margin-right:4px; } .terminal-title { font-size:.8rem; }
+  #terminal { padding:8px; height:80px; } #static-text, #typing-text { font-size:.9rem; }
+  #contact-form { width:95%; padding:15px; }
+  .hs-phone-number, .inputs-list.multi-field.phone-number { flex-direction:column!important; gap:0!important; }
+  .hs-phone-number select, .hs-phone-number input[type=tel], .inputs-list.multi-field.phone-number select, .inputs-list.multi-field.phone-number input[type=tel] { width:100%!important; margin-bottom:15px!important; }
+  .hs-phone-number select:last-child, .hs-phone-number input[type=tel]:last-child { margin-bottom:0!important; }
 
-  #intro h1 {
-    font-size: 1.8rem;
-  }
+  .page-content h1 { font-size: 1.8rem; }
+  .page-content.resume-page-content-modifier h1 { font-size: 1.8rem; }
 
-  .btn {
-    padding: 10px 18px;
-    font-size: 0.85rem;
+  .page-content.resume-page-content-modifier {
+     max-width: none;
+     width: 100%;
+     padding: 10px 1%;
   }
-
-  .social-icons {
-    gap: 50px;
-    flex-wrap: wrap;
+  .resume-header-wrapper {
+    /* text-align: center; already inherited */
   }
-
-  .icon-item img {
-    width: 40px;
-    height: 40px;
+  .resume-header-container {
+    flex-direction: column;
+    gap: 10px;
   }
-
-  #terminal {
+  .resume-icon-download-btn {
     padding: 10px;
-    font-size: 1rem;
   }
-  #static-text, #typing-text {
-    font-size: 1rem;
+  .resume-icon-download-btn img {
+    width: 22px;
+    height: 22px;
   }
-
-  .nav-links li {
-    margin: 10px 0;
+  .resume-pdf-container {
+    max-width: 95vw;
   }
-
-  #contact-form {
-    width: 95%;
-    padding: 15px;
-  }
-
-  .hs-phone-number,
-  .inputs-list.multi-field.phone-number {
-    flex-direction: column !important;
-    gap: 0px !important;
-  }
-
-  .hs-phone-number select,
-  .hs-phone-number input[type="tel"],
-  .inputs-list.multi-field.phone-number select,
-  .inputs-list.multi-field.phone-number input[type="tel"] {
-      width: 100% !important;
-      margin-bottom: 15px !important;
-  }
-  .hs-phone-number select:last-child,
-  .hs-phone-number input[type="tel"]:last-child {
-      margin-bottom: 0 !important;
-  }
+  .resume-pdf-embed { height: 75vh; min-height: 500px; }
 }
