@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="icon" href="icons/favicon_1.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link rel="stylesheet" href="style.css"> </head>
 <body>
   <header>
     <nav>
@@ -33,30 +32,31 @@
     </nav>
   </header>
 
-  <section id="intro">
-    <h1>\[._.]/ Hi <span id="wave-emoji">👋</span>, my name is Vinay!</h1>
-    <div id="terminal-window">
-      <div class="terminal-header">
-        <div class="terminal-buttons">
-          <span class="terminal-button red"></span>
-          <span class="terminal-button yellow"></span>
-          <span class="terminal-button green"></span>
+  <main class="homepage-main">
+    <section id="intro">
+      <h1>\[._.]/ Hi <span id="wave-emoji">👋</span>, my name is Vinay!</h1>
+      <div id="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="terminal-button red"></span>
+            <span class="terminal-button yellow"></span>
+            <span class="terminal-button green-btn"></span> </div>
+          <div class="terminal-title">bash</div>
         </div>
-        <div class="terminal-title">bash</div>
+        <div id="terminal">
+          <div id="static-wrapper">
+            <span id="static-text"></span><span id="static-cursor" class="cursor">|</span>
+          </div>
+          <div id="skill-wrapper">
+            <span id="typing-text"></span><span id="skill-cursor" class="cursor">|</span>
+          </div>
+        </div>
       </div>
-      <div id="terminal">
-        <div id="static-wrapper">
-          <span id="static-text"></span><span id="static-cursor" class="cursor">|</span>
-        </div>
-        <div id="skill-wrapper">
-          <span id="typing-text"></span><span id="skill-cursor" class="cursor">|</span>
-        </div>
+      <div class="button-container">
+        <a href="portfolio.html" class="btn">View My Work & Projects</a>
       </div>
-    </div>
-    <div class="button-container">
-      <a href="portfolio.html" class="btn">View My Work & Projects</a>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="social-icons">
@@ -80,7 +80,7 @@
   </footer>
 
   <script>
-    // Typing Effect Script
+    // Typing Effect Script (Keep your existing script)
     const phrase = "user:~$ I am a robotics engineer with expertise in: ";
     const skills = [
       " software development", " system design", " hardware-software integration",
@@ -120,6 +120,8 @@
     }
     skillCursor.style.display = 'none'; document.getElementById('skill-wrapper').style.visibility = 'hidden';
     setTimeout(() => { staticTextElement.textContent = ""; typeSkill(); }, 500);
+
+    // Hamburger menu script (Keep your existing script)
     const hamburger = document.querySelector('.hamburger'); const navLinks = document.querySelector('.nav-links');
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); hamburger.classList.toggle('toggle'); });
