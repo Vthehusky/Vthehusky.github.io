@@ -26,11 +26,11 @@ body.blog-page-original-theme {
   background-position: center !important;
   background-repeat: no-repeat !important;
   min-height: 100vh !important;
-  display: flex !important; /* Crucial for original layout & footer push */
+  display: flex !important;
   flex-direction: column !important;
   position: relative !important;
-  color: #fff !important; /* Original default text color */
-  background-color: transparent !important; /* Override new theme dark bg */
+  color: #fff !important;
+  background-color: transparent !important;
 }
 
 body.contact-page { background-image: url('bb8.png') !important; }
@@ -46,17 +46,17 @@ body.blog-page-original-theme::before {
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-color: rgba(0, 0, 0, 0.3) !important; /* Default original overlay */
+  background-color: rgba(0, 0, 0, 0.3) !important;
   z-index: -1 !important;
 }
 body.contact-page::before {
-  background-color: rgba(0, 0, 0, 0.5) !important; /* Darker overlay for Contact page */
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* --- UNIVERSAL NEW THEME HEADER & FOOTER --- */
+/* --- UNIVERSAL NEW THEME HEADER --- */
 header {
   background: rgba(10, 10, 10, 0.85);
-  color: #E0E0E0; /* For text directly in header, if any */
+  color: #E0E0E0;
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -64,10 +64,10 @@ header {
   border-bottom: 1px solid #00FF00;
 }
 header .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
-header .logo a { color: #E0E0E0; text-decoration: none; font-size: 1.5rem; font-weight: bold; font-family: 'Ubuntu Mono', monospace; /* Ensure new theme font */ }
+header .logo a { color: #E0E0E0; text-decoration: none; font-size: 1.5rem; font-weight: bold; font-family: 'Ubuntu Mono', monospace; }
 header .nav-links { list-style: none; display: flex; }
 header .nav-links li { margin-left: 40px; position: relative; }
-header .nav-links a { color: #E0E0E0; text-decoration: none; font-size: 1rem; transition: color 0.3s ease; padding-bottom: 5px; display: inline-flex; align-items: center; font-family: 'Ubuntu Mono', monospace; /* Ensure new theme font */ }
+header .nav-links a { color: #E0E0E0; text-decoration: none; font-size: 1rem; transition: color 0.3s ease; padding-bottom: 5px; display: inline-flex; align-items: center; font-family: 'Ubuntu Mono', monospace; }
 header .nav-links a i { margin-right: 8px; color: #00FF00; }
 header .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #00FF00; transition: width 0.3s ease-in-out; }
 header .nav-links a:hover::after { width: 100%; }
@@ -89,6 +89,7 @@ header .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate
 header .hamburger.toggle span:nth-child(2) { opacity: 0; }
 header .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
+/* --- UNIVERSAL FOOTER STYLING --- */
 footer {
   background: rgba(10, 10, 10, 0.85);
   text-align: center;
@@ -99,21 +100,39 @@ footer {
   border-top: 1px solid #00FF00;
   z-index: 1000;
 }
-/* NEW THEME Footer Content Styles */
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer { color: #888888; }
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .social-icons { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 15px; }
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .icon-item a { display: inline-block; }
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .icon-item img { width: 32px; height: 32px; transition: transform .3s, opacity .3s, filter .3s; filter: grayscale(50%) brightness(1.2); }
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .icon-item a:hover img { transform: scale(1.15); opacity: 1; filter: grayscale(0%) brightness(1) drop-shadow(0 0 5px #00FF00); }
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer p { font-size: 0.9rem; color: #888888; font-family: 'Ubuntu Mono', monospace; }
+/* Unified Social Icons - Larger size, wider spacing, and glow effect for ALL pages */
+footer .social-icons {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 200px !important; /* Original wider gap */
+  margin-bottom: 10px !important;
+}
+footer .icon-item a {
+  display: inline-block !important;
+}
+footer .icon-item img {
+  width: 64px !important; /* Original larger size */
+  height: 64px !important; /* Original larger size */
+  transition: transform .3s, opacity .3s, filter .3s !important;
+  filter: grayscale(50%) brightness(1.2); /* Initial subtle filter for ALL icons to prep for glow */
+}
+footer .icon-item a:hover img {
+  transform: scale(1.15) !important; /* Unified scale for hover */
+  opacity: 1 !important; /* Full opacity on hover */
+  filter: grayscale(0%) brightness(1) drop-shadow(0 0 5px #00FF00) !important; /* Unified Glow effect for ALL */
+}
 
-/* ORIGINAL THEME Footer Content Styles */
-body.contact-page footer, body.resume-page-original-theme footer, body.blog-page-original-theme footer { color: #fff !important; } /* Original footer text color */
-body.contact-page footer .social-icons, body.resume-page-original-theme footer .social-icons, body.blog-page-original-theme footer .social-icons { display: flex !important; justify-content: center !important; align-items: center !important; gap: 200px !important; margin-bottom: 10px !important; }
-body.contact-page footer .icon-item a, body.resume-page-original-theme footer .icon-item a, body.blog-page-original-theme footer .icon-item a { display: inline-block !important; }
-body.contact-page footer .icon-item img, body.resume-page-original-theme footer .icon-item img, body.blog-page-original-theme footer .icon-item img { width: 64px !important; height: 64px !important; transition: transform .3s, opacity .3s !important; filter: none !important; }
-body.contact-page footer .icon-item a:hover img, body.resume-page-original-theme footer .icon-item a:hover img, body.blog-page-original-theme footer .icon-item a:hover img { transform: scale(1.1) !important; opacity: .8 !important; filter: none !important; }
-body.contact-page footer p, body.resume-page-original-theme footer p, body.blog-page-original-theme footer p { font-size: 1rem !important; color: #fff !important; font-family: Arial, sans-serif !important; }
+/* Footer paragraph text styling */
+body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer { color: #888888; }
+body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer p {
+  font-size: 0.9rem; color: #888888; font-family: 'Ubuntu Mono', monospace;
+}
+body.contact-page footer p,
+body.resume-page-original-theme footer p,
+body.blog-page-original-theme footer p {
+  font-size: 1rem !important; color: #fff !important; font-family: Arial, sans-serif !important;
+}
 
 
 /* --- NEW THEME HOMEPAGE CONTENT (index.html) --- */
@@ -143,7 +162,6 @@ body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .button-container { margin-top: 35px; text-align: center; }
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .btn { display: inline-block; padding: 12px 28px; background-color: #00FF00; color: #0a0a0a; text-decoration: none; border-radius: 5px; text-align: center; font-size: 1rem; font-weight: bold; transition: background-color .3s ease, transform .3s ease, color .3s ease; border: 1px solid #00FF00; font-family: 'Ubuntu Mono', monospace; }
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .btn:hover { background-color: #0a0a0a; color: #00FF00; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 255, 0, 0.2); }
-/* Original .btn style for original themed pages, if they use a generic .btn */
 body.contact-page .btn, body.resume-page-original-theme .btn, body.blog-page-original-theme .btn {
   display: inline-block; padding: 15px 25px; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px; text-align: center; font-size: 1rem; transition: background-color .3s ease, transform .3s ease; font-family: Arial, sans-serif;
 }
@@ -151,7 +169,6 @@ body.contact-page .btn:hover, body.resume-page-original-theme .btn:hover, body.b
   background-color: #555; transform: scale(1.05);
 }
 .btn .btn-icon { width: 1em; height: 1em; margin-right: 0.5em; vertical-align: middle; }
-
 
 /* --- NEW THEME GENERAL PAGE CONTENT (About, Portfolio) --- */
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) main.page-content {
@@ -167,8 +184,6 @@ body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original
 }
 
 /* --- ORIGINAL STYLES FOR SPECIFIC PAGE CONTENT SECTIONS --- */
-
-/* Contact Form Section Styling (Original) */
 body.contact-page section#contact-form {
   max-width: 700px; width: 90%; margin: 50px auto; padding: 30px; background-color: rgba(255,255,255,0.15);
   border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); color: #f0f0f0 !important; flex-grow: 1;
@@ -183,63 +198,55 @@ body.contact-page .hs-input::placeholder, body.contact-page .hbspt-form input[ty
 body.contact-page .hs-button.primary, body.contact-page .actions input[type=submit], body.contact-page .hbspt-form input[type=submit], body.contact-page .hbspt-form button[type=submit] { width:100%!important; padding:12px 20px!important; background-color:#007bff!important; color:#fff!important; border:none!important; border-radius:4px!important; cursor:pointer!important; transition:background-color .3s ease!important; font-size:1.1rem!important; font-weight:bold!important; margin-top:15px!important; text-transform:none!important; font-family: Arial, sans-serif !important; }
 body.contact-page .hs-button.primary:hover, body.contact-page .actions input[type=submit]:hover, body.contact-page .hbspt-form input[type=submit]:hover, body.contact-page .hbspt-form button[type=submit]:hover { background-color:#0056b3!important; }
 
-
-/* ORIGINAL STYLES FOR RESUME PAGE CONTENT - Copied Verbatim from your original style.css and Scoped */
 body.resume-page-original-theme main.page-content.resume-page-content-modifier {
   max-width: none !important; width: 100% !important; padding: 20px 5% !important; margin: 20px 0 !important;
   background-color: transparent !important; color: #fff !important; flex-grow: 1 !important; font-family: Arial, sans-serif !important;
 }
-body.resume-page-original-theme .resume-header-wrapper { /* Copied from original */
+body.resume-page-original-theme .resume-header-wrapper {
   text-align: center !important; margin-bottom: 25px !important; border-bottom: 1px solid #555 !important; padding-bottom: 10px !important;
 }
-body.resume-page-original-theme .page-content.resume-page-content-modifier h1 { /* Targets H1 within the resume main content */
+body.resume-page-original-theme .page-content.resume-page-content-modifier h1 {
     margin-bottom: 0 !important; border-bottom: none !important; padding-bottom: 0 !important; font-size: 2.2rem !important;
-    text-align: left !important; /* As per your original .page-content.resume-page-content-modifier h1 */
-    color: #fff !important; font-family: Arial, sans-serif !important;
+    text-align: left !important; color: #fff !important; font-family: Arial, sans-serif !important;
 }
-body.resume-page-original-theme .resume-header-container { /* Copied from original */
+body.resume-page-original-theme .resume-header-container {
   display: inline-flex !important; align-items: center !important; gap: 20px !important;
 }
-body.resume-page-original-theme .resume-icon-download-btn { /* Copied from original */
+body.resume-page-original-theme .resume-icon-download-btn {
   display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 8px !important;
   background-color: rgba(255, 255, 255, 0.2) !important; border-radius: 50% !important;
   transition: background-color 0.3s ease, transform 0.3s ease !important; border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
-body.resume-page-original-theme .resume-icon-download-btn:hover { /* Copied from original */
+body.resume-page-original-theme .resume-icon-download-btn:hover {
   background-color: rgba(255, 255, 255, 0.4) !important; transform: scale(1.1) !important;
 }
-body.resume-page-original-theme .resume-icon-download-btn img { /* Copied from original */
+body.resume-page-original-theme .resume-icon-download-btn img {
   width: 35px !important; height: 35px !important; display: block !important; filter: brightness(0) invert(1) !important;
 }
-body.resume-page-original-theme .resume-pdf-container { /* Copied from original */
+body.resume-page-original-theme .resume-pdf-container {
   position: relative !important; width: 100% !important; max-width: 75vw !important; margin: 0 auto !important;
 }
-body.resume-page-original-theme .resume-pdf-embed { /* Copied from original */
+body.resume-page-original-theme .resume-pdf-embed {
   width: 100% !important; height: 85vh !important; min-height: 700px !important; border: 1px solid #555 !important;
   display: block !important; box-shadow: 0 0 15px rgba(0,0,0,0.4) !important;
 }
-body.resume-page-original-theme .resume-pdf-embed p { color: #333 !important; font-family: Arial, sans-serif !important; } /* Fallback text */
-body.resume-page-original-theme .resume-pdf-embed a { color: #007bff !important; } /* Fallback link */
+body.resume-page-original-theme .resume-pdf-embed p { color: #333 !important; font-family: Arial, sans-serif !important; }
+body.resume-page-original-theme .resume-pdf-embed a { color: #007bff !important; }
 
-
-/* ORIGINAL STYLES FOR BLOG PAGE CONTENT - Scoped */
-body.blog-page-original-theme main.page-content { /* Original .page-content style */
+body.blog-page-original-theme main.page-content {
     color: #fff !important; padding: 20px !important; max-width: 1100px !important; margin: 20px auto !important; flex-grow: 1 !important;
     background: transparent !important; font-family: Arial, sans-serif !important;
 }
-body.blog-page-original-theme main.page-content h1 { /* Original .page-content h1 style */
+body.blog-page-original-theme main.page-content h1 {
     font-size: 2.2rem !important; color: #fff !important;
-    /* border-bottom: none !important; */ /* Original .page-content h1 had no border */
-    padding-bottom: 0 !important; margin-bottom: 20px !important; font-family: Arial, sans-serif !important;
+    padding-bottom: 0 !important; margin-bottom: 20px !important; font-family: Arial, sans-serif !important; border-bottom: none !important;
 }
-body.blog-page-original-theme main.page-content p { /* Original .page-content p style */
+body.blog-page-original-theme main.page-content p {
     font-size: 1.1rem !important; line-height: 1.7 !important; margin-bottom: 15px !important; color: #fff !important; font-family: Arial, sans-serif !important;
 }
 
-/* Smooth Scrolling */
 html { scroll-behavior: smooth; }
 
-/* Thank you page - new theme */
 .thankyou-message { text-align: center; margin: 50px auto; padding: 30px; max-width: 600px; background-color: rgba(30,30,30, 0.7); color: #E0E0E0; border-radius: 8px; font-family: 'Ubuntu Mono', monospace; flex-grow:1; }
 .thankyou-message h1 { color: #FFFFFF; border-bottom: 1px solid #00FF00; padding-bottom:10px; margin-bottom:20px;}
 .thankyou-message p { margin-bottom: 20px; font-size:1.1em; }
@@ -264,8 +271,7 @@ html { scroll-behavior: smooth; }
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) main.page-content { max-width: 90vw !important; padding: 15px !important; }
 
   body.contact-page #contact-form { width:90% !important; margin-left:auto !important; margin-right:auto !important; padding:20px !important; }
-  /* Original Resume Responsive - from your original style.css */
-  body.resume-page-original-theme .page-content.resume-page-content-modifier { padding: 15px 2.5% !important; max-width:none !important; width:100% !important; }
+  body.resume-page-original-theme .page-content.resume-page-content-modifier { padding: 15px 2.5% !important; }
   body.resume-page-original-theme .resume-header-container { gap: 15px !important; }
   body.resume-page-original-theme .resume-icon-download-btn { padding: 8px !important; }
   body.resume-page-original-theme .resume-icon-download-btn img { width: 20px !important; height: 20px !important; }
@@ -273,12 +279,9 @@ html { scroll-behavior: smooth; }
   body.resume-page-original-theme .resume-pdf-embed { height: 80vh !important; min-height: 600px !important; }
   body.blog-page-original-theme main.page-content { max-width: 90vw !important; padding: 15px !important; }
 
-  /* Footer responsive icons for NEW theme */
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .social-icons { gap: 20px !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .icon-item img { width: 28px !important; height: 28px !important; }
-  /* Footer responsive icons for ORIGINAL theme */
-  body.contact-page footer .social-icons, body.resume-page-original-theme footer .social-icons, body.blog-page-original-theme footer .social-icons { gap: 100px !important; } /* Original gap */
-  body.contact-page footer .icon-item img, body.resume-page-original-theme footer .icon-item img, body.blog-page-original-theme footer .icon-item img { width: 48px !important; height: 48px !important; } /* Original size */
+  /* Unified Footer Responsive Icons - Original Larger Sizes */
+  footer .social-icons { gap: 100px !important; }
+  footer .icon-item img { width: 48px !important; height: 48px !important; }
 }
 
 @media (max-width: 600px) { /* Mobile */
@@ -299,9 +302,8 @@ html { scroll-behavior: smooth; }
   body.contact-page .hs-phone-number select, body.contact-page .hs-phone-number input[type=tel], body.contact-page .inputs-list.multi-field.phone-number select, body.contact-page .inputs-list.multi-field.phone-number input[type=tel] { width:100%!important; margin-bottom:15px!important; }
   body.contact-page .hs-phone-number select:last-child, body.contact-page .hs-phone-number input[type=tel]:last-child { margin-bottom:0!important; }
 
-  /* Original Resume Responsive - from your original style.css */
   body.resume-page-original-theme .page-content.resume-page-content-modifier h1 { font-size: 1.8rem !important; }
-  body.resume-page-original-theme .page-content.resume-page-content-modifier { padding: 10px 1% !important; max-width:none !important; width:100% !important; }
+  body.resume-page-original-theme .page-content.resume-page-content-modifier { padding: 10px 1% !important; }
   body.resume-page-original-theme .resume-header-container { flex-direction: column !important; gap: 10px !important; }
   body.resume-page-original-theme .resume-icon-download-btn { padding: 10px !important; }
   body.resume-page-original-theme .resume-icon-download-btn img { width: 22px !important; height: 22px !important; }
@@ -310,10 +312,7 @@ html { scroll-behavior: smooth; }
 
   body.blog-page-original-theme main.page-content h1 { font-size: 1.8rem !important; }
 
-  /* Footer responsive icons for NEW theme */
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .social-icons { gap: 20px !important; flex-wrap: wrap !important;}
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer .icon-item img { width: 28px !important; height: 28px !important; }
-  /* Footer responsive icons for ORIGINAL theme */
-  body.contact-page footer .social-icons, body.resume-page-original-theme footer .social-icons, body.blog-page-original-theme footer .social-icons { gap: 50px !important; flex-wrap: wrap !important; } /* Original gap */
-  body.contact-page footer .icon-item img, body.resume-page-original-theme footer .icon-item img, body.blog-page-original-theme footer .icon-item img { width: 40px !important; height: 40px !important; } /* Original size */
+  /* Unified Footer Responsive Icons - Original Sizes */
+  footer .social-icons { gap: 50px !important; flex-wrap: wrap !important; }
+  footer .icon-item img { width: 40px !important; height: 40px !important; }
 }
