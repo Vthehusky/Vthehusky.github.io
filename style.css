@@ -8,8 +8,8 @@
 body { /* DEFAULT FOR NEW THEME - Home, About, Portfolio */
   font-family: 'Ubuntu Mono', monospace;
   line-height: 1.6;
-  background-color: #1a1a1a; /* Dark background for new theme */
-  color: #E0E0E0; /* Light grey text for new theme */
+  background-color: #1a1a1a;
+  color: #E0E0E0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -100,30 +100,27 @@ footer {
   border-top: 1px solid #00FF00;
   z-index: 1000;
 }
-/* Unified Social Icons - Larger size, wider spacing, and glow effect for ALL pages */
 footer .social-icons {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 200px !important; /* Original wider gap */
+  gap: 200px !important;
   margin-bottom: 10px !important;
 }
 footer .icon-item a {
   display: inline-block !important;
 }
 footer .icon-item img {
-  width: 64px !important; /* Original larger size */
-  height: 64px !important; /* Original larger size */
+  width: 64px !important;
+  height: 64px !important;
   transition: transform .3s, opacity .3s, filter .3s !important;
-  filter: grayscale(50%) brightness(1.2); /* Initial subtle filter for ALL icons to prep for glow */
+  filter: grayscale(50%) brightness(1.2);
 }
 footer .icon-item a:hover img {
-  transform: scale(1.15) !important; /* Unified scale for hover */
-  opacity: 1 !important; /* Full opacity on hover */
-  filter: grayscale(0%) brightness(1) drop-shadow(0 0 5px #00FF00) !important; /* Unified Glow effect for ALL */
+  transform: scale(1.15) !important;
+  opacity: 1 !important;
+  filter: grayscale(0%) brightness(1) drop-shadow(0 0 5px #00FF00) !important;
 }
-
-/* Footer paragraph text styling */
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer { color: #888888; }
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) footer p {
   font-size: 0.9rem; color: #888888; font-family: 'Ubuntu Mono', monospace;
@@ -134,32 +131,103 @@ body.blog-page-original-theme footer p {
   font-size: 1rem !important; color: #fff !important; font-family: Arial, sans-serif !important;
 }
 
-
 /* --- NEW THEME HOMEPAGE CONTENT (index.html) --- */
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) main.homepage-main {
     flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;
 }
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #intro {
-  padding: 40px 20px; text-align: center; color: #E0E0E0; width:100%; max-width:800px; margin-left:auto; margin-right:auto;
+  padding: 20px;
+  text-align: center;
+  color: #E0E0E0;
+  width:100%;
+  /* max-width: 800px; Let terminal define its max-width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #intro h1 { font-size: 2.2rem; margin-bottom: 25px; color: #FFFFFF; }
-#wave-emoji { display: inline-block; animation-name: wave-animation; animation-duration: 2.5s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; transform-origin: 70% 70%; }
+
+#terminal-window {
+  background-color: #0a0a0a;
+  color: #00FF00;
+  font-family: 'Ubuntu Mono', monospace;
+  border-radius: 8px;
+  width: 70vw; /* Wider */
+  max-width: 950px; /* Increased max-width */
+  min-width: 320px; /* Smallest reasonable size */
+  margin: 0 auto 30px auto; /* Centered, adjusted bottom margin */
+  box-shadow: 0 8px 25px rgba(0, 255, 0, 0.1);
+  border: 1px solid #333333;
+  overflow: hidden;
+  display: flex; /* Added to manage inner flex items */
+  flex-direction: column; /* Stack header and terminal content vertically */
+}
+.terminal-header {
+  background-color: #1c1c1c;
+  padding: 8px 12px; /* Adjusted padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will push bash text to the right */
+  border-bottom: 1px solid #333333;
+  min-height: 40px; /* Ensure header has some height */
+}
+.terminal-buttons {
+  display: flex;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+.terminal-button { width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
+.terminal-button.red { background-color: #ff5f57; }
+.terminal-button.yellow { background-color: #febc2e; }
+.terminal-button.green, .terminal-button.green-btn { background-color: #28c840; }
+
+.terminal-title-main { /* Renamed from .terminal-title to avoid conflict if original was used elsewhere */
+  color: #E0E0E0;
+  font-size: 1.2rem; /* Adjusted to match previous style for the greeting */
+  font-weight: normal; /* Greeting was not bold */
+  text-align: center;
+  flex-grow: 1; /* Allow title to take available space between buttons and bash */
+  padding: 0 10px; /* Padding around the main title */
+  display: flex; /* For vertical centering of content if needed */
+  align-items: center;
+  justify-content: center;
+  font-family: 'Ubuntu Mono', monospace; /* Match terminal font */
+}
+#wave-emoji { /* Copied from intro h1 styles */
+  display: inline-block;
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  font-size: 1.2rem; /* Match terminal-title-main font size */
+}
 @keyframes wave-animation { 0%{transform:rotate(0deg)} 10%{transform:rotate(14deg)} 20%{transform:rotate(-8deg)} 30%{transform:rotate(14deg)} 40%{transform:rotate(-4deg)} 50%{transform:rotate(10deg)} 60%{transform:rotate(0deg)} 100%{transform:rotate(0deg)} }
 
-#terminal-window { background-color: #0a0a0a; color: #00FF00; font-family: 'Ubuntu Mono', monospace; border-radius: 8px; width: 750px; max-width: 90%; margin: 30px auto; box-shadow: 0 8px 25px rgba(0, 255, 0, 0.1); border: 1px solid #333333; overflow: hidden; }
-.terminal-header { background-color: #1c1c1c; padding: 8px 12px; display: flex; align-items: center; border-bottom: 1px solid #333333; }
-.terminal-buttons { display: flex; }
-.terminal-button { width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
-.terminal-button.red { background-color: #ff5f57; } .terminal-button.yellow { background-color: #febc2e; } .terminal-button.green, .terminal-button.green-btn { background-color: #28c840; }
-.terminal-title { color: #888888; font-size: .9rem; margin-left: auto; padding-right: 10px; }
-#terminal { padding: 15px; height: 100px; display: flex; flex-direction: column; justify-content: flex-start; overflow-y: auto; }
+.terminal-shell-type { /* For "bash" text */
+  color: #888888; /* Dim color like original title */
+  font-size: 0.9rem;
+  padding-left: 10px; /* Space from main title */
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+#terminal {
+  padding: 15px; /* Original padding was 15px */
+  min-height: 150px; /* Longer terminal content area */
+  height: auto; /* Let content define height up to a point if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  flex-grow: 1; /* Allow terminal content to take up space within #terminal-window */
+}
 #static-wrapper, #skill-wrapper { text-align: left; width: 100%; min-height: 25px; }
 #skill-wrapper { visibility: hidden; }
 #static-text, #typing-text { font-size: 1.1rem; display: inline-block; white-space: pre; line-height: 1.4; }
 .cursor { display: inline-block; background-color: #00FF00; width: 8px; height: 1.2em; margin-left: 2px; animation: blink 1s step-start infinite; vertical-align: baseline; }
 @keyframes blink { 50% { opacity: 0; } }
 
-body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .button-container { margin-top: 35px; text-align: center; }
+body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .button-container { margin-top: 30px; text-align: center; }
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .btn { display: inline-block; padding: 12px 28px; background-color: #00FF00; color: #0a0a0a; text-decoration: none; border-radius: 5px; text-align: center; font-size: 1rem; font-weight: bold; transition: background-color .3s ease, transform .3s ease, color .3s ease; border: 1px solid #00FF00; font-family: 'Ubuntu Mono', monospace; }
 body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .btn:hover { background-color: #0a0a0a; color: #00FF00; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 255, 0, 0.2); }
 body.contact-page .btn, body.resume-page-original-theme .btn, body.blog-page-original-theme .btn {
@@ -184,6 +252,7 @@ body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original
 }
 
 /* --- ORIGINAL STYLES FOR SPECIFIC PAGE CONTENT SECTIONS --- */
+/* ... (Contact, Resume, Blog specific content styles - these remain unchanged from previous correct version) ... */
 body.contact-page section#contact-form {
   max-width: 700px; width: 90%; margin: 50px auto; padding: 30px; background-color: rgba(255,255,255,0.15);
   border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); color: #f0f0f0 !important; flex-grow: 1;
@@ -245,6 +314,7 @@ body.blog-page-original-theme main.page-content p {
     font-size: 1.1rem !important; line-height: 1.7 !important; margin-bottom: 15px !important; color: #fff !important; font-family: Arial, sans-serif !important;
 }
 
+
 html { scroll-behavior: smooth; }
 
 .thankyou-message { text-align: center; margin: 50px auto; padding: 30px; max-width: 600px; background-color: rgba(30,30,30, 0.7); color: #E0E0E0; border-radius: 8px; font-family: 'Ubuntu Mono', monospace; flex-grow:1; }
@@ -262,9 +332,9 @@ html { scroll-behavior: smooth; }
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -10; /* Ensure it's well behind all other content */
-  display: block; /* Remove default canvas spacing */
-  background-color: transparent; /* Canvas itself is transparent, effect is drawn */
+  z-index: -10;
+  display: block;
+  background-color: transparent;
 }
 
 /* --- RESPONSIVE STYLES --- */
@@ -275,11 +345,12 @@ html { scroll-behavior: smooth; }
   header .nav-links a::after { display: none !important; }
   header .hamburger { display: flex !important; }
 
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal-window { width: auto !important; max-width: 90% !important; margin: 20px auto !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal { padding: 10px !important; height: 90px !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal-window { width: 85vw !important; max-width: 650px !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal { padding: 10px !important; min-height: 120px !important; }
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #static-text,
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #typing-text { font-size: 1rem !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #intro h1 { font-size: 2rem !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-title-main { font-size: 1.1rem !important; }
+  #wave-emoji { font-size: 1.1rem !important; }
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) main.page-content { max-width: 90vw !important; padding: 15px !important; }
 
   body.contact-page #contact-form { width:90% !important; margin-left:auto !important; margin-right:auto !important; padding:20px !important; }
@@ -291,21 +362,23 @@ html { scroll-behavior: smooth; }
   body.resume-page-original-theme .resume-pdf-embed { height: 80vh !important; min-height: 600px !important; }
   body.blog-page-original-theme main.page-content { max-width: 90vw !important; padding: 15px !important; }
 
-  /* Unified Footer Responsive Icons - Original Larger Sizes */
   footer .social-icons { gap: 100px !important; }
   footer .icon-item img { width: 48px !important; height: 48px !important; }
 }
 
 @media (max-width: 600px) { /* Mobile */
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #intro { padding: 30px 10px !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #intro h1 { font-size: 1.8rem !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal-window { max-width: 95% !important; margin: 15px auto !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-header { padding: 6px 10px !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-button { width:10px !important; height:10px !important; margin-right:4px !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-title { font-size:.8rem !important; }
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal { padding:8px !important; height:80px !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #intro { padding: 20px 10px !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal-window { width: 95vw !important; max-width: none !important; margin: 15px auto 20px auto !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-header { padding: 8px 10px !important; flex-wrap: wrap; /* Allow wrapping if title is too long */ }
+  body.not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-button { width:10px !important; height:10px !important; margin-right:4px !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-title-main { font-size: 0.9rem !important; white-space: normal; line-height: 1.2; order: 2; /* Ensure buttons are first */ width: calc(100% - 60px); /* Adjust based on buttons and bash text width */ margin-left: auto; margin-right: auto; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-shell-type { font-size:.8rem !important; order: 3; } /* Place bash text after title */
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .terminal-buttons { order: 1; } /* Buttons first */
+
+  #wave-emoji { font-size: 0.9rem !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #terminal { padding:10px !important; min-height:100px !important; } /* Slightly longer terminal */
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #static-text,
-  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #typing-text { font-size:.9rem !important; }
+  body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) #typing-text { font-size:.85rem !important; /* Slightly smaller if needed */ }
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) .btn { padding: 10px 20px !important; font-size: 0.9rem !important; }
   body:not(.contact-page):not(.resume-page-original-theme):not(.blog-page-original-theme) main.page-content h1 { font-size: 1.8rem !important; }
 
@@ -324,7 +397,6 @@ html { scroll-behavior: smooth; }
 
   body.blog-page-original-theme main.page-content h1 { font-size: 1.8rem !important; }
 
-  /* Unified Footer Responsive Icons - Original Sizes */
   footer .social-icons { gap: 50px !important; flex-wrap: wrap !important; }
   footer .icon-item img { width: 40px !important; height: 40px !important; }
 }
